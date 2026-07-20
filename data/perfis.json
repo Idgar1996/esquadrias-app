@@ -1,0 +1,13 @@
+[
+    {
+        "codigo": "BX1516",
+        "descricao": "Trilho Superior",
+        "peso_por_metro": 0.47,
+        "fornecedores": [
+            "Aluita",
+            "Alpa",
+            "Fixasul"
+        ]
+                  
+    }
+]
