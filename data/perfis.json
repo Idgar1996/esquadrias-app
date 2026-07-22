@@ -1,13 +1,54 @@
-[
-    {
-        "codigo": "BX1516",
-        "descricao": "Trilho Superior",
-        "peso_por_metro": 0.47,
-        "fornecedores": [
-            "Aluita",
-            "Alpa",
-            "Fixasul"
-        ]
-                  
-    }
-]
+{
+    "linha-box-acrilico":[
+        {
+            "codigo": "BX1516",
+            "descricao": "Trilho Superior",
+            "peso_por_metro": 0.47,
+            "fornecedores":[
+                "Aluita",
+                "Alpa",
+                "Fixasul"
+            ]          
+        },
+        {
+            "codigo": "BX1006",
+            "descricao": "Trilho Inferior",
+            "peso_por_metro": 0.20,
+            "fornecedores":[
+                "Aluita",
+                "Alpa",
+                "Fixasul"
+            ]
+        },
+        {
+            "codigo": "BX1517",
+            "descricao": "Laterias",
+            "peso_por_metro": 0.20,
+            "fornecedores":[
+                "Aluita",
+                "Alpa",
+                "Fixasul"
+            ]
+        },
+        {
+            "codigo": "BX507",
+            "descricao": "Travesa da folha",
+            "peso_por_metro": 0.22,
+            "fornecedores":[
+                "Aluita",
+                "Alpa",
+                "Fixasul"
+            ]
+        },
+        {
+            "codigo": "BX1518",
+            "descricao": "Montante das folhas",
+            "peso_por_metro": 0.17,
+            "fornecedores":[
+                "Aluita",
+                "Alpa",
+                "Fixasul"
+            ]
+        }
+    ]
+}

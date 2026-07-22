@@ -1,0 +1,43 @@
+{
+    "linha-box-acrilico": [
+        {
+            "codigo": "CHA6160000",
+            "descricao": "Chapa PET revoada cristal",
+            "valor-chapa": 94.905,
+            "fornecedor": [
+                "Aluita",
+                "Fixasul"
+            ]
+        },
+        {
+            "codigo": "NYL3280000",
+            "descricao": "Fixador inferior da folha do box",
+            "valor": 0.40,
+            "fornecedor": "Aluita"
+        },
+        {
+            "codigo": "ROL260 FIXA",
+            "descricao": "Roldana c/cavalete fixo p/box",
+            "valor": 1.411,
+            "fornecedor": "Aluita"            
+        },
+        {
+            "codigo": "PUX154",
+            "descricao": "Puxador duplo p/box",
+            "valor": 1.369,
+            "fornecedor": "Aluita"
+        },
+        {
+            "codigo": "NYL3270000",
+            "descricao": "Guia deslizante inferior p/box",
+            "valor": 0.581,
+            "fornecedor": "Aluita"
+        },
+        {
+            "codigo": "003-73x9",
+            "descricao": "Borracha de fixação",
+            "valor": 2.64,
+            "fornecedor": "Vedugal"
+        }
+    ]
+}
