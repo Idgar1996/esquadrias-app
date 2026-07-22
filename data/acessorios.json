@@ -39,5 +39,31 @@
             "valor": 2.64,
             "fornecedor": "Vedugal"
         }
+    ],
+    "insumos": [
+        {
+            "codigo": "",
+            "descricao": "Rebite 4.0x16",
+            "valor": 75.60,
+            "aplicacao": "Fixação dos montantes"
+        },
+        {
+            "codigo": "",
+            "descricao": "Parafuso 4.0x50",
+            "valor": 45.00,
+            "aplicacao": "Fixação do marco"
+        },
+        {
+            "codigo": "",
+            "descricao": "Silicone Acético",
+            "valor": 15.00,
+            "aplicacao": "Vedação do marco e da folha fixa"
+        },
+        {
+            "codigo": "",
+            "descricao": "Bucha Parede Oca 8mm",
+            "valor": 20.00,
+            "aplicacao": "Suporte para fixação dos parafusos"
+        }
     ]
 }

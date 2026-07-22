@@ -9,6 +9,10 @@
         {
             "Valor_por_km": 1.50,
             "remocao_velha_media": 150.00,
-            "remocao_velha_grande": 400.00
+            "remocao_velha_grande": 400.00,
+            "valor_hora_funcionario": 12.00,
+            "energia_eletrica": 1000.00,
+            "internet": 140.00,
+            "impostos": 
         }
 }
