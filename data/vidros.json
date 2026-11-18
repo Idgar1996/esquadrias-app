@@ -2,8 +2,11 @@
     {
         "id": 1,
         "cor": "incolor",
-        "espessura": "4mm",
-        "fornecedor1": 39.90,
-        "fornecedor2": 50.26
+        "espessura_mm": 4,
+        "fornecedores": ["Polividros", "Real Vidros", "Real Sul"],
+        "unidade": "m2",
+        "valor": 47.33,
+        "chapa_largura_mm": 3210,
+        "chapa_altura_mm": 2400
     }
 ]

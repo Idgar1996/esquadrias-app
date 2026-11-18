@@ -3,41 +3,46 @@
         {
             "codigo": "CHA6160000",
             "descricao": "Chapa PET revoada cristal",
-            "valor-chapa": 94.905,
-            "fornecedor": [
-                "Aluita",
-                "Fixasul"
-            ]
+            "valor": 112.97,
+            "fornecedores": ["Aluita", "Fixasul"],
+            "unidade": "chapa",
+            "chapa_largura_mm": 900,
+            "chapa_altura_mm": 1960
         },
         {
             "codigo": "NYL3280000",
             "descricao": "Fixador inferior da folha do box",
             "valor": 0.40,
-            "fornecedor": "Aluita"
+            "fornecedores": ["Aluita"],
+            "unidade": "un"
         },
         {
             "codigo": "ROL260 FIXA",
             "descricao": "Roldana c/cavalete fixo p/box",
-            "valor": 1.411,
-            "fornecedor": "Aluita"            
+            "valor": 1.36,
+            "fornecedores": ["Aluita"],
+            "unidade": "un"
         },
         {
             "codigo": "PUX154",
             "descricao": "Puxador duplo p/box",
-            "valor": 1.369,
-            "fornecedor": "Aluita"
+            "valor": 1.32,
+            "fornecedores": ["Aluita"],
+            "unidade": "un"
         },
         {
             "codigo": "NYL3270000",
             "descricao": "Guia deslizante inferior p/box",
-            "valor": 0.581,
-            "fornecedor": "Aluita"
+            "valor": 0.56,
+            "fornecedores": ["Aluita"],
+            "unidade": "un"
         },
         {
             "codigo": "003-73x9",
             "descricao": "Borracha de fixação",
-            "valor": 2.64,
-            "fornecedor": "Vedugal"
+            "valor": 5.4,
+            "fornecedores": ["Vedugal"],
+            "unidade": "m"
         }
     ]
 }
