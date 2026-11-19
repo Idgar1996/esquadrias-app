@@ -58,6 +58,49 @@ Branch: `feat-gean-19-11-2026-dados-py`
 - `jsoncheck` (função no `~/.bashrc`) valida os JSON. Num PC novo, ela precisa ser recriada.
 
 ## Retomar em outro PC
+
+### 0. PC sem WSL (começando do zero)
+1. **Instalar o WSL:** abra o **PowerShell como Administrador** e rode:
+   ```powershell
+   wsl --install
+   ```
+   Reinicie o PC. O Ubuntu abre sozinho e pede um usuário e uma senha: **use o usuário `idgar`**, assim os caminhos ficam iguais aos deste PC (`/home/idgar/...`), e a conversa do Claude é encontrada sem ajustes.
+2. **Ferramentas básicas**, no terminal do Ubuntu:
+   ```bash
+   sudo apt update && sudo apt install -y git python3-venv python3-pip unzip
+   ```
+3. **Claude Code:**
+   ```bash
+   curl -fsSL https://claude.ai/install.sh | bash
+   ```
+   Feche e abra o terminal. Rode `claude` uma vez para fazer o login.
+4. **Função `jsoncheck`**: cole no final do `~/.bashrc` (`nano ~/.bashrc`) e depois rode `source ~/.bashrc`:
+   ```bash
+   jsoncheck() {
+       local pasta="${1:-data}"
+       local erros=0
+       for f in "$pasta"/*.json; do
+           if msg=$(python3 -m json.tool "$f" 2>&1 >/dev/null); then
+               echo "✔ $f"
+           else
+               echo "✘ $f → $msg"
+               erros=$((erros + 1))
+           fi
+       done
+       if [ "$erros" -eq 0 ]; then echo "Tudo OK"; else echo "$erros arquivo(s) com erro"; fi
+   }
+   ```
+5. Siga os passos 1 a 3 abaixo. Para o clone, crie antes a pasta: `mkdir -p ~/workbench && cd ~/workbench`.
+6. **Restaurar a conversa do Claude** (o zip que foi para o Google Drive): baixe o zip no Windows e, no Ubuntu, rode:
+   ```bash
+   mkdir -p ~/.claude/projects
+   unzip "/mnt/c/Users/<usuário do Windows>/Downloads/claude-esquadrias.zip" -d ~/.claude/projects/
+   cd ~/workbench/esquadrias-app
+   claude --resume
+   ```
+   Escolha a conversa mais recente na lista.
+
+### Passos gerais
 1. **Acesso ao GitHub por SSH** (só na primeira vez):
    ```bash
    ssh-keygen -t ed25519            # Enter em tudo
