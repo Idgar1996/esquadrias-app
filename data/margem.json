@@ -3,7 +3,8 @@
         {
             "aluminio": 1.85,
             "acessorios": 1.70,
-            "vidros": 1.75
+            "vidros": 1.75,
+            "taxa_producao": 1.23
         },
     "custos":
         {

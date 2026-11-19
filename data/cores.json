@@ -6,5 +6,6 @@
     {"id":5, "nome": "Bronze", "preco_quilo": 55.00},
     {"id":6, "nome": "Amadeirado", "preco_quilo": 78.00},
     {"id":7, "nome": "Natural", "preco_quilo": 42.00},
-    {"id":8, "nome": "Anodizado Brilhante", "preco_quilo": 60.00}
+    {"id":8, "nome": "Anodizado Brilhante", "preco_quilo": 60.00},
+    {"id":9, "nome": "Anodizado Fosco", "preco_quilo": 55.00}
 ]

@@ -43,6 +43,13 @@
             "valor": 5.4,
             "fornecedores": ["Vedugal"],
             "unidade": "m"
+        },
+        {
+            "codigo": "NYL590",
+            "descricao": "Cantoneira de montagem das folhas",
+            "valor": 0.60,
+            "fornecedores": ["Aluita"],
+            "unidade": "un"
         }
     ]
 }
