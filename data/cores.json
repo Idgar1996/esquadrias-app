@@ -1,10 +1,11 @@
 [
-    {"id":1, "nome": "Branco Brilhante", "preço_por_quilo": 49.00},
-    {"id":2, "nome": "Preto Fosco", "preço_por_quilo": 51.00},
-    {"id":3, "nome": "Cinza", "preço_por_quilo": 55.00},
-    {"id":4, "nome": "Marrom", "preço_por_quilo": 55.00},
-    {"id":5, "nome": "Bronze", "preço_por_quilo": 55.00},
-    {"id":6, "nome": "Amadeirado", "preço_por_quilo": 78.00},
-    {"id":1, "nome": "Natural", "preço_por_quilo": 42.00},
-    {"id":1, "nome": "Anodizado Brilhante", "preço_por_quilo": 60.00}
+    {"id":1, "nome": "Branco Brilhante", "preco_quilo": 49.00},
+    {"id":2, "nome": "Preto Fosco", "preco_quilo": 51.00},
+    {"id":3, "nome": "Cinza", "preco_quilo": 55.00},
+    {"id":4, "nome": "Marrom", "preco_quilo": 55.00},
+    {"id":5, "nome": "Bronze", "preco_quilo": 55.00},
+    {"id":6, "nome": "Amadeirado", "preco_quilo": 78.00},
+    {"id":7, "nome": "Natural", "preco_quilo": 42.00},
+    {"id":8, "nome": "Anodizado Brilhante", "preco_quilo": 60.00},
+    {"id":9, "nome": "Anodizado Fosco", "preco_quilo": 55.00}
 ]

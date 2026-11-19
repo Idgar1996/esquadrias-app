@@ -1,0 +1,28 @@
+{
+    "box-acrilico-2f": {
+        "descricao": "Box de acrílico 2 folhas",
+        "linha": "linha-box-acrilico",
+        "cor_padrao": 9,
+        "imagem": "box-acrilico-2f.png",
+        "perfis": [
+            {"codigo": "BX1516", "qtd": 1, "medida": "L", "posicao": "Trilho superior"},
+            {"codigo": "BX1006", "qtd": 1, "medida": "L", "posicao": "Trilho inferior"},
+            {"codigo": "BX1517", "qtd": 2, "medida": "A", "posicao": "Laterais"},
+            {"codigo": "BX507", "qtd": 2, "medida": "L / 2", "posicao": "Travessa folha"},
+            {"codigo": "BX1518", "qtd": 4, "medida": "A", "posicao": "Montante da altura"},
+            {"codigo": "BX1518", "qtd": 2, "medida": "L", "posicao": "Montante da largura"}
+        ],
+        "acessorios": [
+            {"codigo": "NYL3280000", "qtd": 1, "posicao": "Fixador inferior folha box"},
+            {"codigo": "ROL260 FIXA", "qtd": 2, "posicao": "Roldana"},
+            {"codigo": "PUX154", "qtd": 1, "posicao": "Puxador duplo"},
+            {"codigo": "NYL3270000", "qtd": 1, "posicao": "Guia deslizante"},
+            {"codigo": "003-73x9", "qtd": 4, "medida": "L", "posicao": "Borracha"},
+            {"codigo": "003-73x9", "qtd": 4, "medida": "A", "posicao": "Borracha"},
+            {"codigo": "NYL590", "qtd": 8, "posicao": "Cantoneira de junção dos montantes"}
+        ],
+        "chapas": [
+            {"codigo": "CHA6160000", "qtd": 2, "largura": "L / 2", "altura": "A", "posicao": "uma por folha"}
+        ]
+    }
+}
