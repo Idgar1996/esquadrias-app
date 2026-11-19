@@ -13,11 +13,15 @@ source venv/bin/activate        # local venv (Python 3.12): Flask 3.1, PyInstall
 python app.py                   # dev server, debug mode, http://127.0.0.1:5000
 ```
 
-Run from the repo root: `app.py` opens `data/*.json` with relative paths. There is no requirements.txt, test suite, or linter config yet. PyInstaller is installed in the venv (intended for packaging as an executable), but there is no spec file yet.
+Setup on a new machine: `python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt`. Run `app.py` from the repo root (it opens `data/*.json` with relative paths). No test suite or linter yet; modules are tested by hand in the `python3` REPL. PyInstaller is installed in the venv (intended for packaging as an executable), but there is no spec file yet.
 
 ## Architecture
 
-- `app.py` is the whole backend. `carregar_dados()` re-reads **all** JSON files on every request (so edits to `data/` show up without a restart), and each route returns one dataset as JSON: `/perfis`, `/cores`, `/margem`, `/vidros`, `/acessorios`.
+- **Start here when resuming work:** `docs/CONTINUAR.md` has the current state, pending items, decisions already made and next steps. Keep it updated at the end of each session.
+- `dados.py` — the only module that reads `data/*.json` (`ler(nome)` plus `buscar_*` lookups returning the item or `None`); paths are built from `Path(__file__)`.
+- `formulas.py` — `avaliar(formula, L, A)`: evaluates tipologia formula strings via a character whitelist regex + `eval` with empty `__builtins__`; any bad formula raises `ValueError`.
+- `calculos.py` — in progress: one function per group (`calcular_perfis`, then acessorios, chapas) returning raw cost without margin, and `orcar` applying margins/rate/quantity/external costs.
+- `app.py` is still the old version: `carregar_dados()` re-reads **all** JSON files on every request and each route returns one dataset (`/perfis`, `/cores`, `/margem`, `/vidros`, `/acessorios`). It will be rewritten to use `dados.py`/`calculos.py`.
 - `static/` and `templates/` exist but are empty; no frontend yet.
 - `data/` is the database:
   - `perfis.json`, `acessorios.json` — objects keyed by product line (e.g. `"linha-box-acrilico"`), each a list of items identified by `codigo`. Profiles are priced by weight (`peso_metro`, `unidade: "kg/m"`) × the color's `preco_quilo`; accessories have `valor` per `unidade`.
