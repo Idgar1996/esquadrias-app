@@ -1,6 +1,6 @@
 # Onde paramos (passagem de bastão)
 
-Atualizado em 19/11/2026. Leia este arquivo ao retomar o trabalho, em qualquer PC.
+Atualizado em 22/11/2026. Leia este arquivo ao retomar o trabalho, em qualquer PC.
 
 ## Estado atual
 
@@ -11,10 +11,10 @@ Branch: `feat-gean-19-11-2026-dados-py`
 | `data/*.json` | Padronizados e revisados (PR #1 já mergeado na `main`) |
 | `dados.py` | Pronto: `ler`, `buscar_tipologia`, `buscar_cor`, `buscar_perfil`, `buscar_acessorios`, `buscar_margem` |
 | `formulas.py` | Pronto: `avaliar(formula, L, A)`, com as duas travas e o `try/except` |
-| `calculos.py` | **Em andamento.** A Parte 1 (`calcular_perfis`) foi escrita pela metade quando a luz caiu |
+| `calculos.py` | **Em andamento.** Parte 1 (`calcular_perfis`) pronta e testada: box 1500 × 1900, cor 9 → `{'peso_kg': 3.8969999999999994, 'custo': 214.33499999999995}` |
 | `app.py` | Ainda é a versão antiga. Só vai mudar depois do `calculos.py` |
 
-### Pendências no `calculos.py` (Parte 1)
+### Pendências no `calculos.py` (Parte 1) — concluídas em 22/11
 1. `formulas.avalias` → `formulas.avaliar` (erro de digitação).
 2. Falta o restante da função depois da linha do `medida_m`:
    ```python
@@ -34,8 +34,13 @@ Branch: `feat-gean-19-11-2026-dados-py`
    {'peso_kg': 3.897..., 'custo': 214.33...}
    ```
 
+### Mini-curso de Python (`docs/curso/`)
+- **Aula 01:** concluída.
+- **Aula 02:** em andamento. Exercícios 2.1 a 2.7 feitos, com respostas `R:`/`R2:` no próprio arquivo, e já revisados. **Falta corrigir:** 2.3 (2º item, `R2` buscou no `acessorios.json` em vez da tipologia), 2.4 (`id` como texto; preço 54.0), 2.5 (rodar cada linha e copiar o nome do erro), 2.6 (usar só `item = box["perfis"][0]` e `perfil`, sem sobrescrever, e usar o `L`), 2.7 (comparar o tipo do `codigo` com o `1`; ler o `buscar_perfil` no `dados.py`). Depois, as 2 perguntas finais da aula.
+- Para retomar: use a mensagem do `docs/curso/README.md`, dizendo que a aula 02 está em correção.
+
 ## Próximos passos
-1. Terminar e testar a `calcular_perfis` (acima).
+1. ~~Terminar e testar a `calcular_perfis`~~ (feito; as pendências acima já foram aplicadas no código).
 2. **Parte 2:** `calcular_acessorios(tipologia, L, A)`: soma `qtd × valor` de cada acessório. Os itens com unidade `"m"` (borracha) usam `qtd × medida/1000 × valor`. Devolve o custo do kit, **sem margem**. A ideia é você escrever sozinho, só a partir desta descrição.
 3. **Parte 3:** `calcular_chapas(tipologia, L, A)`: `qtd × valor` da chapa, mais um alerta se `largura`/`altura` (fórmulas) passarem de `chapa_largura_mm`/`chapa_altura_mm`.
 4. **Parte 4:** `orcar(...)`: busca a tipologia e a cor (usa `cor_padrao` se nenhuma for informada), chama as três funções, aplica as margens por grupo, `× taxa_producao`, `× quantidade` e `+ custos externos` (uma vez por orçamento, sem margem). Arredonda só no final.
