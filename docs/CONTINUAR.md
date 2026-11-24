@@ -9,7 +9,7 @@ Branch: `feat-gean-19-11-2026-dados-py`
 | Arquivo | Situação |
 |---|---|
 | `data/*.json` | Padronizados e revisados (PR #1 já mergeado na `main`) |
-| `dados.py` | Pronto: `ler`, `buscar_tipologia`, `buscar_cor`, `buscar_perfil`, `buscar_acessorios`, `buscar_margem` |
+| `dados.py` | Pronto: `ler`, `buscar_tipologia`, `buscar_cor`, `buscar_perfil`, `buscar_acessorio`, `buscar_margem` |
 | `formulas.py` | Pronto: `avaliar(formula, L, A)`, com as duas travas e o `try/except` |
 | `calculos.py` | **Em andamento.** Parte 1 (`calcular_perfis`) pronta e testada: box 1500 × 1900, cor 9 → `{'peso_kg': 3.8969999999999994, 'custo': 214.33499999999995}` |
 | `app.py` | Ainda é a versão antiga. Só vai mudar depois do `calculos.py` |
@@ -57,6 +57,10 @@ Branch: `feat-gean-19-11-2026-dados-py`
 - **Objetivo de longo prazo:** cobrir todos os modelos e substituir o SIS.PO (Alumake) e as planilhas.
 
 ## Como trabalhamos
+- **Dois PCs:**
+  - **"escritorio"**: projeto em `~/workbench/esquadrias-app`. Aqui o foco é **produzir** e adiantar o sistema, com explicações diretas e sem curso.
+  - **"casa"**: projeto em `~/esquadrias-app`. Aqui o foco é **estudar** com calma (mini-curso em `docs/curso/`) e treinar aplicando no próprio sistema.
+  - Ao começar em qualquer um dos dois: `git pull` e diga ao Claude em qual PC você está.
 - O código é escrito **à mão, por você**. O Claude explica parte por parte (o quê e por quê), passa os testes e revisa. Ele não cria arquivos de código, a não ser que você peça.
 - **"Dúvida rápida:"** no início da mensagem = pergunta paralela. Resposta curta, e depois voltamos ao assunto.
 - Teste cada parte no `python3`. Mudou o arquivo, recarregue: `exit()` e entre de novo, ou `importlib.reload(modulo)`.

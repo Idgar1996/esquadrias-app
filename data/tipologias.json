@@ -17,8 +17,7 @@
             {"codigo": "ROL260 FIXA", "qtd": 2, "posicao": "Roldana"},
             {"codigo": "PUX154", "qtd": 1, "posicao": "Puxador duplo"},
             {"codigo": "NYL3270000", "qtd": 1, "posicao": "Guia deslizante"},
-            {"codigo": "003-73x9", "qtd": 4, "medida": "L", "posicao": "Borracha"},
-            {"codigo": "003-73x9", "qtd": 4, "medida": "A", "posicao": "Borracha"},
+            {"codigo": "003-73x9", "qtd": 1, "medida": "(L * 4) + (A * 4)", "posicao": "Borracha"},
             {"codigo": "NYL590", "qtd": 8, "posicao": "Cantoneira de junção dos montantes"}
         ],
         "chapas": [
