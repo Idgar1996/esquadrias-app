@@ -42,7 +42,7 @@ Branch: `feat-gean-19-11-2026-dados-py`
 ## Próximos passos
 1. ~~Terminar e testar a `calcular_perfis`~~ (feito; as pendências acima já foram aplicadas no código).
 2. **Parte 2:** `calcular_acessorios(tipologia, L, A)`: soma `qtd × valor` de cada acessório. Os itens com unidade `"m"` (borracha) usam `qtd × medida/1000 × valor`. Devolve o custo do kit, **sem margem**. A ideia é você escrever sozinho, só a partir desta descrição.
-3. **Parte 3:** `calcular_chapas(tipologia, L, A)`: `qtd × valor` da chapa, mais um alerta se `largura`/`altura` (fórmulas) passarem de `chapa_largura_mm`/`chapa_altura_mm`.
+3. **Parte 3:** `calcular_chapas(tipologia, L, A)`: `qtd × valor` da chapa, e **erro que interrompe o orçamento** (`raise ValueError`) se `largura`/`altura` (fórmulas) passarem de `chapa_largura_maxima_mm`/`chapa_altura_maxima_mm` (limites úteis já com margem: 875 × 1900 na chapa PET). Não há adaptação: trabalha-se dentro do limite das peças.
 4. **Parte 4:** `orcar(...)`: busca a tipologia e a cor (usa `cor_padrao` se nenhuma for informada), chama as três funções, aplica as margens por grupo, `× taxa_producao`, `× quantidade` e `+ custos externos` (uma vez por orçamento, sem margem). Arredonda só no final.
 5. Depois: `app.py` com as rotas `/api/...`, e então a interface estilo terminal (HTML/CSS/JS em `templates/` e `static/`).
 

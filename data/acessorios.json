@@ -6,8 +6,8 @@
             "valor": 112.97,
             "fornecedores": ["Aluita", "Fixasul"],
             "unidade": "chapa",
-            "chapa_largura_mm": 900,
-            "chapa_altura_mm": 1960
+            "chapa_largura_maxima_mm": 875,
+            "chapa_altura_maxima_mm": 1900
         },
         {
             "codigo": "NYL3280000",
