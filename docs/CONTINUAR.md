@@ -1,6 +1,6 @@
 # Onde paramos (passagem de bastão)
 
-Atualizado em 22/11/2026. Leia este arquivo ao retomar o trabalho, em qualquer PC.
+Atualizado em 24/11/2026 (escritorio). Leia este arquivo ao retomar o trabalho, em qualquer PC.
 
 ## Estado atual
 
@@ -11,28 +11,8 @@ Branch: `feat-gean-19-11-2026-dados-py`
 | `data/*.json` | Padronizados e revisados (PR #1 já mergeado na `main`) |
 | `dados.py` | Pronto: `ler`, `buscar_tipologia`, `buscar_cor`, `buscar_perfil`, `buscar_acessorio`, `buscar_margem` |
 | `formulas.py` | Pronto: `avaliar(formula, L, A)`, com as duas travas e o `try/except` |
-| `calculos.py` | **Em andamento.** Parte 1 (`calcular_perfis`) pronta e testada: box 1500 × 1900, cor 9 → `{'peso_kg': 3.8969999999999994, 'custo': 214.33499999999995}` |
+| `calculos.py` | **Em andamento.** Partes 1 a 3 prontas e testadas (box 1500 × 1900): `calcular_perfis` (cor 9) → 3,897 kg / R$ 214,33; `calcular_acessorios` → R$ 83,24; `calcular_chapas` → R$ 225,94, e erro se a folha passar de 875 × 1900 (vão máximo 1750 × 1900). Falta a Parte 4 (`orcar`) |
 | `app.py` | Ainda é a versão antiga. Só vai mudar depois do `calculos.py` |
-
-### Pendências no `calculos.py` (Parte 1) — concluídas em 22/11
-1. `formulas.avalias` → `formulas.avaliar` (erro de digitação).
-2. Falta o restante da função depois da linha do `medida_m`:
-   ```python
-           peso_total += item["qtd"] * medida_m * perfil["peso_metro"]
-
-       custo = peso_total * cor["preco_quilo"]
-       return {"peso_kg": peso_total, "custo": custo}
-   ```
-   Atenção ao recuo: `peso_total +=` fica **dentro** do `for`; `custo` e `return` ficam **fora** dele.
-3. Na f-string do `raise`, use aspas simples dentro: `{item['codigo']}`.
-4. Teste esperado (box 1500 × 1900, cor 9 Anodizado Fosco):
-   ```python
-   >>> import dados, calculos
-   >>> box = dados.buscar_tipologia("box-acrilico-2f")
-   >>> cor = dados.buscar_cor(9)
-   >>> calculos.calcular_perfis(box, 1500, 1900, cor)
-   {'peso_kg': 3.897..., 'custo': 214.33...}
-   ```
 
 ### Mini-curso de Python (`docs/curso/`)
 - **Aula 01:** concluída.
@@ -40,11 +20,9 @@ Branch: `feat-gean-19-11-2026-dados-py`
 - Para retomar: use a mensagem do `docs/curso/README.md`, dizendo que a aula 02 está em correção.
 
 ## Próximos passos
-1. ~~Terminar e testar a `calcular_perfis`~~ (feito; as pendências acima já foram aplicadas no código).
-2. **Parte 2:** `calcular_acessorios(tipologia, L, A)`: soma `qtd × valor` de cada acessório. Os itens com unidade `"m"` (borracha) usam `qtd × medida/1000 × valor`. Devolve o custo do kit, **sem margem**. A ideia é você escrever sozinho, só a partir desta descrição.
-3. **Parte 3:** `calcular_chapas(tipologia, L, A)`: `qtd × valor` da chapa, e **erro que interrompe o orçamento** (`raise ValueError`) se `largura`/`altura` (fórmulas) passarem de `chapa_largura_maxima_mm`/`chapa_altura_maxima_mm` (limites úteis já com margem: 875 × 1900 na chapa PET). Não há adaptação: trabalha-se dentro do limite das peças.
-4. **Parte 4:** `orcar(...)`: busca a tipologia e a cor (usa `cor_padrao` se nenhuma for informada), chama as três funções, aplica as margens por grupo, `× taxa_producao`, `× quantidade` e `+ custos externos` (uma vez por orçamento, sem margem). Arredonda só no final.
-5. Depois: `app.py` com as rotas `/api/...`, e então a interface estilo terminal (HTML/CSS/JS em `templates/` e `static/`).
+1. ~~Partes 1 a 3 do `calculos.py`~~ (feitas em 22 e 24/11).
+2. **Parte 4 (próxima, no escritorio):** `orcar(...)`: busca a tipologia e a cor (usa `cor_padrao` se nenhuma for informada), chama as três funções, aplica as margens por grupo, `× taxa_producao`, `× quantidade` e `+ custos externos` (uma vez por orçamento, sem margem). Arredonda só no final.
+3. Depois: `app.py` com as rotas `/api/...`, e então a interface estilo terminal (HTML/CSS/JS em `templates/` e `static/`).
 
 ## Decisões já tomadas (não reabrir)
 - **Preço:** cada material tem um único `valor`, o do fornecedor **mais caro**. `fornecedores` é só referência de onde comprar.

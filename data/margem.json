@@ -8,8 +8,9 @@
         },
     "custos":
         {
-            "valor_por_km": 1.50,
-            "remocao_velha_media": 150.00,
-            "remocao_velha_grande": 400.00
+            "preco_diesel": 6.69,
+            "consumo_p_km": 8,
+            "desgaste_p_km": 0.00,
+            "almoco_funcionario_dia": 30.00
         }
 }
