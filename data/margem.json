@@ -9,7 +9,7 @@
     "custos":
         {
             "preco_diesel": 6.69,
-            "consumo_p_km": 8,
+            "consumo_km_litro": 8,
             "desgaste_p_km": 0.00,
             "almoco_funcionario_dia": 30.00
         }

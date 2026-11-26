@@ -1,6 +1,6 @@
 # Onde paramos (passagem de bastão)
 
-Atualizado em 24/11/2026 (escritorio). Leia este arquivo ao retomar o trabalho, em qualquer PC.
+Atualizado em 26/11/2026 (escritorio). Leia este arquivo ao retomar o trabalho, em qualquer PC.
 
 ## Estado atual
 
@@ -11,7 +11,7 @@ Branch: `feat-gean-19-11-2026-dados-py`
 | `data/*.json` | Padronizados e revisados (PR #1 já mergeado na `main`) |
 | `dados.py` | Pronto: `ler`, `buscar_tipologia`, `buscar_cor`, `buscar_perfil`, `buscar_acessorio`, `buscar_margem` |
 | `formulas.py` | Pronto: `avaliar(formula, L, A)`, com as duas travas e o `try/except` |
-| `calculos.py` | **Em andamento.** Partes 1 a 3 prontas e testadas (box 1500 × 1900): `calcular_perfis` (cor 9) → 3,897 kg / R$ 214,33; `calcular_acessorios` → R$ 83,24; `calcular_chapas` → R$ 225,94, e erro se a folha passar de 875 × 1900 (vão máximo 1750 × 1900). Falta a Parte 4 (`orcar`) |
+| `calculos.py` | **Em andamento.** Partes 1 a 3 prontas e testadas (box 1500 × 1900): `calcular_perfis` (cor 9) → 3,897 kg / R$ 214,33; `calcular_acessorios` → R$ 83,24; `calcular_chapas` → R$ 225,94, e erro se a folha passar de 875 × 1900 (vão máximo 1750 × 1900). Parte 4a pronta: `orcar(nome_tipologia, L, A, qtd=1, id_cor=None)` → 1 box 1500 × 1900 = **R$ 1148,11** (qtd 2 = 2296,22; cor 1 → perfis 353,26). Falta a 4b: `calcular_custos_externos` |
 | `app.py` | Ainda é a versão antiga. Só vai mudar depois do `calculos.py` |
 
 ### Mini-curso de Python (`docs/curso/`)
@@ -21,18 +21,32 @@ Branch: `feat-gean-19-11-2026-dados-py`
 
 ## Próximos passos
 1. ~~Partes 1 a 3 do `calculos.py`~~ (feitas em 22 e 24/11).
-2. **Parte 4 (próxima, no escritorio):** `orcar(...)`: busca a tipologia e a cor (usa `cor_padrao` se nenhuma for informada), chama as três funções, aplica as margens por grupo, `× taxa_producao`, `× quantidade` e `+ custos externos` (uma vez por orçamento, sem margem). Arredonda só no final.
-3. Depois: `app.py` com as rotas `/api/...`, e então a interface estilo terminal (HTML/CSS/JS em `templates/` e `static/`).
+2. ~~Parte 4a: `orcar`~~ (feita em 26/11). Ela dá o preço de **1 item**, sem custos externos, e não muda mais.
+3. **Parte 4b (próxima, no escritorio):** `calcular_custos_externos(km_ida, funcionarios, dias_inteiros=0, meios_dias=0, remocao=0, preco_diesel=None)`, no `calculos.py`, depois da `orcar`. Esqueleto na conversa de 26/11. Regras:
+   - `viagens = dias_inteiros + meios_dias` (cada dia = 1 ida e volta; retrabalho entra como mais um dia);
+   - `km_total = km_ida × 2 × viagens`; deslocamento = `km_total ÷ consumo_km_litro × preco_diesel + km_total × desgaste_p_km`;
+   - almoço = `funcionarios × dias_inteiros × almoco_funcionario_dia` (meio dia não tem almoço);
+   - remoção = valor digitado (depende do tipo de peça, da altura, de andaime etc.; sem regra automática);
+   - `preco_diesel` vazio → usa o do `margem.json`.
+   - Testes: `(40, 3, dias_inteiros=2, meios_dias=1, remocao=200)` → km 240, deslocamento 200,70, almoço 180, total **580,70**; com `preco_diesel=6.00` → 560,00; `(40, 2, meios_dias=1)` → 66,90.
+4. Depois: nível do **orçamento** (vários itens): desconto, comissão, custos e rateio nos itens (ver as decisões abaixo).
+5. Depois: `app.py` com as rotas `/api/...`, e então a interface estilo terminal (HTML/CSS/JS em `templates/` e `static/`).
 
 ## Decisões já tomadas (não reabrir)
 - **Preço:** cada material tem um único `valor`, o do fornecedor **mais caro**. `fornecedores` é só referência de onde comprar.
 - **Cálculo sem descontos:** medidas "secas" (`L`, `A`, `L / 2`), sem desconto de trilho nem transpasse. A `taxa_producao` (1,23) absorve isso, mais as perdas e os erros. O sistema serve só para orçamento e alertas, e não gera lista de corte.
-- **Ordem do orçamento:** perfis (kg × preço da cor × margem alumínio) + kit de acessórios (× margem acessórios) + chapa/vidro (× margem **vidros**, que vale também para o acrílico) → soma × `taxa_producao` → × quantidade → + custos externos (deslocamento, remoção, almoço), sem margem.
+- **Ordem do orçamento:** perfis (kg × preço da cor × margem alumínio) + kit de acessórios (× margem acessórios) + chapa/vidro (× margem **vidros**, que vale também para o acrílico) → soma × `taxa_producao` → × quantidade. Os custos externos (deslocamento, remoção, almoço) são calculados uma vez por orçamento, sem margem e sem taxa.
+- **Custos nunca aparecem separados para o cliente:** são diluídos no preço das aberturas. Todo percentual vira valor fixo em R$ sobre a base certa, e nunca se aplica % sobre o preço que já tem custos dentro. Ordem: itens (`orcar`) → desconto % sobre a base → comissão % (calculada **depois** do desconto) → + custos externos → rateio de tudo **proporcional ao valor** de cada item (um fator único; a diferença de centavos vai para o último item).
 - **Quantidades** no `tipologias.json` são para **1 unidade** do produto.
 - **Box acrílico:** cor padrão 9 (Anodizado Fosco). 1 chapa PET por folha (2 por box), sem aproveitamento.
 - As **margens** (1,85 / 1,70 / 1,75) ainda serão revisadas na ponta do lápis: markup × margem real, mão de obra, impostos. A estrutura não muda, só os números no `margem.json`.
 - As planilhas antigas tinham **margem dupla** (o "custo" já vinha com margem). Os preços do JSON são os corretos. Atenção a isso ao usar outras planilhas como base para novas tipologias.
-- **Objetivo de longo prazo:** cobrir todos os modelos e substituir o SIS.PO (Alumake) e as planilhas.
+- **Objetivo de longo prazo:** mais de 100 modelos, cadastros (clientes, fornecedores, materiais) e logística, substituindo o SIS.PO (Alumake) e as planilhas. O **Windel continua** com NF-e e contas a pagar/receber. Modelos são **dados** (receitas no `tipologias.json`), nunca uma função por modelo. Cadastros e pedidos devem ir para SQLite no futuro, mexendo só no `dados.py`.
+- **Futuro (fora do foco de 2026):**
+  - importar o XML da NF-e de compra: atualiza o preço da última compra por fornecedor e dá entrada no estoque. O cálculo continua usando o **maior** preço, e o relatório de compra recomenda o mais barato;
+  - importar as notas dos postos para manter o diesel atualizado;
+  - gerar o orçamento em PDF.
+- **Foco de 2026:** terminar o cálculo. Basta o sistema dar os valores; o orçamento ainda é montado à mão.
 
 ## Como trabalhamos
 - **Dois PCs:**
